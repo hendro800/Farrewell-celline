@@ -1,0 +1,115 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.text-pink {
+    color: #e91e63;
+}
+
+.btn-pink {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-pink:hover {
+    background-color: #c2185b;
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: whitesmoke;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: #e91e63;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #333;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-color: #f8bbd0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 5rem 0;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #e91e63; /* Darker pink */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #e91e63;
+}
+
+.spotify-player {
+    margin-top: 2rem;
+}
+.messages {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.messages h1 {
+    font-size: 2rem;
+    color: #e91e63;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    background-color: #f8f8f8;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.list-group-item:hover {
+    transform: scale(1.02);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    text-align: center;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 200px; /* Set height to a fixed value for uniformity */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    object-fit: cover; /* Ensures images cover the area without distortion */
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05);
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    color: #777;
+}
