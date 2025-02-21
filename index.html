@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ucapan Perpisahan</title>
+    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
@@ -108,10 +110,80 @@
     <footer class="bg-white text-center py-3 shadow-sm">
         <p>&copy; 2025 Kenangan Kita. Dibuat dengan ❤️</p>
     </footer>
-
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+        import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js"; // Import necessary functions
+    
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCKLuFbp-wTKxJvQXsJPQCGdcvM3UXix5Y",
+          authDomain: "awesome-da047.firebaseapp.com",
+          databaseURL: "https://awesome-da047-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "awesome-da047",
+          storageBucket: "awesome-da047.firebasestorage.app",
+          messagingSenderId: "807981412846",
+          appId: "1:807981412846:web:9ff4e4932fb52bfc021eff",
+          measurementId: "G-CB9BS35112"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app); // Initialize Firebase Realtime Database
+    
+        // Fungsi untuk menyimpan pesan ke Firebase
+        function saveMessage(name, message) {
+            const messagesRef = ref(database, 'messages'); // Create a reference to 'messages'
+            const newMessageRef = push(messagesRef); // Use push() to create a new reference
+            set(newMessageRef, { // Use set() to save the message
+                name: name,
+                message: message
+            });
+        }
+    
+        // Menangani pengiriman form
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+    
+            // Simpan pesan ke Firebase
+            saveMessage(name, message);
+    
+            // Kosongkan form
+            document.getElementById('name').value = '';
+            document.getElementById('message').value = '';
+        });
+    
+        // Fungsi untuk menampilkan pesan dari Firebase
+        function displayMessages() {
+            const messagesList = document.getElementById('messagesList');
+            messagesList.innerHTML = ''; // Kosongkan daftar pesan
+    
+            // Ambil pesan dari Firebase
+            const messagesRef = ref(database, 'messages'); // Use ref() to get a reference
+            onValue(messagesRef, function(snapshot) { // Use onValue() to listen for changes
+                snapshot.forEach(function(childSnapshot) {
+                    const msg = childSnapshot.val();
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'list-group-item';
+                    messageElement.innerHTML = `<strong>${msg.name}</strong>: ${msg.message}`;
+                    messagesList.appendChild(messageElement);
+                });
+            });
+        }
+    
+        // Tampilkan pesan saat halaman dimuat
+        window.onload = displayMessages;
+    </script>
+    
+    
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
