@@ -22,20 +22,11 @@ body {
     background-color: #c2185b;
 }
 
-/* Navigation Styles */
-.navbar {
-    background-color: whitesmoke;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.text-pink {
+    color: #e91e63; /* Warna pink yang diinginkan */
 }
 
-.navbar-brand, .nav-link {
-    color: #e91e63;
-    transition: color 0.3s ease;
-}
 
-.nav-link:hover {
-    color: #333;
-}
 
 /* Hero Section Styles */
 .hero {
